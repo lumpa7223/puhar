@@ -6,6 +6,7 @@
   "author": "Duncan.WEN",
   "license": "MIT",
   "dependencies": {
+    "moment": "^2.24.0",
     "puppeteer": "^1.17.0",
     "puppeteer-har": "^1.0.6"
   },
