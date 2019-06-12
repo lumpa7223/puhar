@@ -4,7 +4,7 @@ const fs = require('fs');
 const os = require('os');
 
 (async () => {
-    const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+    const browser = await puppeteer.launch({ ignoreHTTPSErrors: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
     const page = await browser.newPage();
 
     const har = new PuppeteerHar(page);
@@ -13,7 +13,7 @@ const os = require('os');
     await page.goto(process.argv[2]);
 
     const ret = await har.stop();
-    fs.writeFileSync('results.har',JSON.stringify(ret)+os.EOL);
+    fs.writeFileSync('results.har', JSON.stringify(ret) + os.EOL);
 
     await browser.close();
 })();
