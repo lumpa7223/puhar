@@ -34,9 +34,9 @@ const { extractDataFromPerformanceTiming } = require('./helpers');
             "onLoad": measureTime['loadEventEnd'],
         }
     });
-
-    const fname = moment().format('YYYY-MM-DD_HH_mm_ss');
-    fs.writeFileSync(`${fname}.har`, JSON.stringify(ret) + os.EOL);
+    const url = process.argv[2].split('//')[1];
+    const fname = `${url}_${moment().format('YYYY-MM-DD_HH_mm_ss')}`;
+    fs.writeFileSync(`./harfile/${fname}.har`, JSON.stringify(ret) + os.EOL);
 
     await browser.close();
 })();
