@@ -1,4 +1,5 @@
 /node_modules
-*.har
 yarn.lock
 /harfile/*.har
+*.har
+package-lock.json

@@ -8,8 +8,9 @@ const { extractDataFromPerformanceTiming } = require('./helpers');
 (async () => {
     // headless: false --- will open browser
     const browser = await puppeteer.launch({ ignoreHTTPSErrors: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+    const userAgent = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.75 Safari/537.36';
     const page = await browser.newPage();
-
+    await page.setUserAgent(userAgent);
     const har = new PuppeteerHar(page);
     //await har.start({ path: 'results1.har' });
     await har.start();
