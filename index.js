@@ -7,7 +7,7 @@ const { extractDataFromPerformanceTiming } = require('./helpers');
 
 (async () => {
     // headless: false --- will open browser
-    const browser = await puppeteer.launch({ ignoreHTTPSErrors: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+    const browser = await puppeteer.launch({ ignoreHTTPSErrors: true, args: ['--disable-gpu', '--disable-dev-shm-usage', '--no-first-run', '--no-zygote', '--single-process', '--no-sandbox', '--disable-setuid-sandbox'] });
     const userAgent = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.75 Safari/537.36';
     const page = await browser.newPage();
     await page.setUserAgent(userAgent);
