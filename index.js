@@ -16,8 +16,7 @@ const { extractDataFromPerformanceTiming } = require('./helpers');
     await har.start();
 
     try {
-        await page.goto(process.argv[2]);
-
+        await page.goto(process.argv[2], { waitUntil: 'load', timeout: 60000 });
     } catch (e) {
         console.log(e);
         browser.close();
