@@ -14,7 +14,14 @@ const { extractDataFromPerformanceTiming } = require('./helpers');
     const har = new PuppeteerHar(page);
     //await har.start({ path: 'results1.har' });
     await har.start();
-    await page.goto(process.argv[2]);
+
+    try {
+        await page.goto(process.argv[2]);
+
+    } catch (e) {
+        console.log(e);
+        browser.close();
+    }
 
     const performanceTiming = JSON.parse(
         await page.evaluate(() => JSON.stringify(window.performance.timing))
