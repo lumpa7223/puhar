@@ -47,7 +47,7 @@ const { extractDataFromPerformanceTiming } = require('./helpers');
             }
         });
         const url = target.split('//')[1];
-        const fname = `${url}_${moment().format('YYYY-MM-DD_HH_mm_ss')}`;
+        const fname = `${url.replace('/', '_')}_${moment().format('YYYY-MM-DD_HH_mm_ss')}`;
         fs.writeFileSync(`./harfile/${fname}.har`, JSON.stringify(ret) + os.EOL);
     }
 
